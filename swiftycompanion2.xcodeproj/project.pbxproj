@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3018FC4E219F42D400A73AC4 /* Histogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3018FC4D219F42D400A73AC4 /* Histogram.swift */; };
+		303AA878219F120500FF050C /* StructsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303AA877219F120500FF050C /* StructsJson.swift */; };
 		30BA193F2191EFE30083F9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA193E2191EFE30083F9E9 /* AppDelegate.swift */; };
 		30BA19412191EFE30083F9E9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA19402191EFE30083F9E9 /* FirstViewController.swift */; };
 		30BA19432191EFE30083F9E9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA19422191EFE30083F9E9 /* SecondViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3018FC4D219F42D400A73AC4 /* Histogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Histogram.swift; sourceTree = "<group>"; };
+		303AA877219F120500FF050C /* StructsJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructsJson.swift; sourceTree = "<group>"; };
 		30BA193B2191EFE30083F9E9 /* swiftycompanion2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftycompanion2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA193E2191EFE30083F9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30BA19402191EFE30083F9E9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -60,8 +64,10 @@
 			children = (
 				30BA193E2191EFE30083F9E9 /* AppDelegate.swift */,
 				30BA19402191EFE30083F9E9 /* FirstViewController.swift */,
+				303AA877219F120500FF050C /* StructsJson.swift */,
 				30BA19422191EFE30083F9E9 /* SecondViewController.swift */,
 				30BA19522191F3920083F9E9 /* TableViewCell.swift */,
+				3018FC4D219F42D400A73AC4 /* Histogram.swift */,
 				30BA19442191EFE30083F9E9 /* Main.storyboard */,
 				30BA19472191EFE30083F9E9 /* Assets.xcassets */,
 				30BA19492191EFE30083F9E9 /* LaunchScreen.storyboard */,
@@ -142,7 +148,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3018FC4E219F42D400A73AC4 /* Histogram.swift in Sources */,
 				30BA19432191EFE30083F9E9 /* SecondViewController.swift in Sources */,
+				303AA878219F120500FF050C /* StructsJson.swift in Sources */,
 				30BA19532191F3920083F9E9 /* TableViewCell.swift in Sources */,
 				30BA193F2191EFE30083F9E9 /* AppDelegate.swift in Sources */,
 				30BA19412191EFE30083F9E9 /* FirstViewController.swift in Sources */,
@@ -283,6 +291,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = swiftycompanion2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = izelensk.swiftycompanion2;
@@ -297,6 +306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = swiftycompanion2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = izelensk.swiftycompanion2;

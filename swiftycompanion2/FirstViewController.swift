@@ -8,24 +8,6 @@
 
 import UIKit
 
-struct User: Decodable {
-    var id : Int
-    var login : String
-    var url : String
-}
-
-struct UserInfo: Decodable {
-    var id : Int
-    var email : String
-    var login : String
-    var first_name : String
-    var last_name : String
-//    var url : String
-    var phone : String
-    var image_url : String
-    //    var location : String
-}
-
 struct Request : Decodable{
     let access_token : String
 }
@@ -96,7 +78,7 @@ class FirstViewController: UIViewController {
                         self.tableView.refreshControl?.endRefreshing()
                     }
                 } catch {
-                    print("catch")
+                    print("catch getUsers")
                 }
             }
         }).resume()
@@ -120,7 +102,7 @@ class FirstViewController: UIViewController {
                     print(self.currentUser)
                     completion(true)
                 } catch {
-                    print("catch")
+                    print("catch getUserbyXlogin")
                 }
             }
         }).resume()
@@ -212,12 +194,12 @@ extension   FirstViewController : UITableViewDelegate, UITableViewDataSource{
                     secVC.firstName.text = self.currentUser?.first_name
                     secVC.image.image = UIImage(data: data!)
                     secVC.phone.text = self.currentUser?.phone
+                    secVC.location.text = self.currentUser?.location
                 }
             } else {
                 print("error while get token")
             }
         }
-
     }
 }
 
