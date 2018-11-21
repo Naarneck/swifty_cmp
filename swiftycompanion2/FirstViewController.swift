@@ -195,6 +195,11 @@ extension   FirstViewController : UITableViewDelegate, UITableViewDataSource{
                     secVC.image.image = UIImage(data: data!)
                     secVC.phone.text = self.currentUser?.phone
                     secVC.location.text = self.currentUser?.location
+                    if ((self.currentUser?.cursus_users.count)! > 0) {
+                        secVC.level.text = String(format:"%.2f", (self.currentUser?.cursus_users[0].level)!)
+                        secVC.histogram.selectSkills(cursus: (self.currentUser?.cursus_users)!)
+                    }
+                    secVC.histogram.drawBackground()
                 }
             } else {
                 print("error while get token")

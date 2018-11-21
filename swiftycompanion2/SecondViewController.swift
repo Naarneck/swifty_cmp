@@ -17,7 +17,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var location: UILabel!
-    
+    @IBOutlet weak var level: UILabel!
     @IBOutlet weak var histogram: Histogram!
     
     override func viewDidLoad() {
