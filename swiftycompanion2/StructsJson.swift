@@ -29,26 +29,26 @@ struct UserInfo: Decodable {
 }
 
 struct ProjectsUser: Codable {
-    let id, occurrence: Int
+//    let id, occurrence: Int
     let finalMark: Int?
-    let status: Status
+    let status: String?
     let validated: Bool?
-    let currentTeamID: Int?
+//    let currentTeamID: Int?
     let project: Cursus
-    let cursusIDS: [Int]
+//    let cursusIDS: [Int]
     let markedAt: String?
-    let marked: Bool
+//    let marked: Bool
     
     enum CodingKeys: String, CodingKey {
-        case id, occurrence
+//        case id, occurrence
         case finalMark = "final_mark"
         case status
         case validated = "validated?"
-        case currentTeamID = "current_team_id"
+//        case currentTeamID = "current_team_id"
         case project
-        case cursusIDS = "cursus_ids"
+//        case cursusIDS = "cursus_ids"
         case markedAt = "marked_at"
-        case marked
+//        case marked
     }
 }
 
@@ -73,12 +73,12 @@ struct CursusUser: Codable {
     }
 }
 
-enum Status: String, Codable {
-    case finished = "finished"
-    case inProgress = "in_progress"
-    case parent = "parent"
-    case searchingAGroup = "searching_a_group"
-}
+//enum Status: String, Codable {
+//    case finished = "finished"
+//    case inProgress = "in_progress"
+//    case parent = "parent"
+//    case searchingAGroup = "searching_a_group"
+//}
 
 struct Skill: Codable {
     let id: Int
@@ -87,15 +87,15 @@ struct Skill: Codable {
 }
 
 struct Cursus: Codable {
-    let id: Int
-    let createdAt: String?
+//    let id: Int
+//    let createdAt: String?
     let name, slug: String
-    let parentID: Int?
+//    let parentID: Int?
     
     enum CodingKeys: String, CodingKey {
-        case id
-        case createdAt = "created_at"
+//        case id
+//        case createdAt = "created_at"
         case name, slug
-        case parentID = "parent_id"
+//        case parentID = "parent_id"
     }
 }

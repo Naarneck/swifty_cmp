@@ -113,7 +113,6 @@ class Histogram: UIView {
         graphLayer.path = path.cgPath
         self.layer.addSublayer(graphLayer)
     }
-    
     func drawPath(){
     }
 }

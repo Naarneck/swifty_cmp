@@ -129,7 +129,7 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func searchClick(_ sender: UIButton) {
-        if ((searchField.text?.count)! < 3) || (((searchField.text?.lowercased().rangeOfCharacter(from: self.charset)) == nil)){
+        if ((searchField.text?.count)! < 2) || (((searchField.text?.lowercased().rangeOfCharacter(from: self.charset)) == nil)){
             return
         }
         let minRange = searchField.text?.lowercased()
@@ -188,6 +188,7 @@ extension   FirstViewController : UITableViewDelegate, UITableViewDataSource{
                 let url = URL(string: (self.currentUser?.image_url)!)
                 let data = try? Data(contentsOf: url!)
                 DispatchQueue.main.async {
+                    secVC.currentProject = (self.currentUser?.projects_users)!
                     secVC.email.text = self.currentUser?.email
                     secVC.login.text = self.currentUser?.login
                     secVC.lastName.text = self.currentUser?.last_name
@@ -200,6 +201,7 @@ extension   FirstViewController : UITableViewDelegate, UITableViewDataSource{
                         secVC.histogram.selectSkills(cursus: (self.currentUser?.cursus_users)!)
                     }
                     secVC.histogram.drawBackground()
+                    secVC.pickerProject.reloadAllComponents()
                 }
             } else {
                 print("error while get token")
