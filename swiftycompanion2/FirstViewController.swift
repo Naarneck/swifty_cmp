@@ -14,6 +14,9 @@ struct Request : Decodable{
 
 class FirstViewController: UIViewController {
     
+    
+    @IBOutlet weak var searchBtn: UIButton!
+    
     let charset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz0123456789-")
     var token : String?
     var currentUser : UserInfo?
@@ -147,6 +150,10 @@ class FirstViewController: UIViewController {
         } else {
             print("good")
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+        {
+            self.searchClick(self.searchBtn)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -195,7 +202,9 @@ extension   FirstViewController : UITableViewDelegate, UITableViewDataSource{
                     secVC.firstName.text = self.currentUser?.first_name
                     secVC.image.image = UIImage(data: data!)
                     secVC.phone.text = self.currentUser?.phone
+                    secVC.phone.replaceEmpty(replace: "Unknown")
                     secVC.location.text = self.currentUser?.location
+                    secVC.location.replaceEmpty(replace: "Unavailable")
                     if ((self.currentUser?.cursus_users.count)! > 0) {
                         secVC.level.text = String(format:"%.2f", (self.currentUser?.cursus_users[0].level)!)
                         secVC.histogram.selectSkills(cursus: (self.currentUser?.cursus_users)!)

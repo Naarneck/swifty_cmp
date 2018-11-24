@@ -10,8 +10,8 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
-    let data = ["proj 1 ","proj 2","proj 2","proj 2","proj 2"]
-    var currentProject = [ProjectsUser(finalMark: 0, status: "unknown", validated: false, project: Cursus(name: "unknown", slug: "unknown"), markedAt: "unknown")]
+//    let data = ["proj 1 ","proj 2","proj 2","proj 2","proj 2"]
+    var currentProject = [ProjectsUser(finalMark: 0, status: "unknown", validated: false, project: Cursus(name: "unknown", slug: "unknown"), markedAt: "unknown", marked : false)]
 
     @IBOutlet weak var login: UILabel!
     @IBOutlet weak var email: UILabel!
@@ -44,14 +44,29 @@ class SecondViewController: UIViewController {
     }
 }
 
+extension UILabel{
+    func replaceEmpty(replace: String ){
+        if self.text == nil {
+            self.text = replace
+        }
+    }
+}
+
+
 extension UIImageView {
-    
     func makeRounded() {
         let radius = self.frame.height/2.0
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
 }
+
+extension String {
+    func contains(find: String) -> Bool{
+        return self.range(of: find, options: .caseInsensitive) != nil
+    }
+}
+
 
 extension SecondViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -67,14 +82,39 @@ extension SecondViewController : UIPickerViewDelegate, UIPickerViewDataSource {
 //        self.projname.text = data[row]
         self.projname.text = currentProject[row].project.name
         if let mark = currentProject[row].finalMark {
+            if mark > 50 {
+                self.mark.textColor = UIColor.green
+            } else {
+                self.mark.textColor = UIColor.red
+            }
             self.mark.text = String(mark)
         } else {
-            self.mark.text = "0"
+            self.mark.textColor = UIColor.black
+            self.mark.text = "-"
         }
+        
         self.status.text = currentProject[row].status
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if currentProject[row].project.slug.contains(find: "piscine-c"){
+            return ("Pool C " + currentProject[row].project.name)
+        } else if currentProject[row].project.slug.contains(find: "piscine-php")
+        {
+            return ("Pool PHP " + currentProject[row].project.name)
+        } else if currentProject[row].project.slug.contains(find: "piscine-swift")
+        {
+            return ("Pool Swift " + currentProject[row].project.name)
+        } else if currentProject[row].project.slug.contains(find: "piscine-cpp")
+        {
+            return ("Pool C++ " + currentProject[row].project.name)
+        } else if currentProject[row].project.slug.contains(find: "piscine-php")
+        {
+            return ("Pool PHP " + currentProject[row].project.name)
+        } else if currentProject[row].project.slug.contains(find: "piscine-python")
+        {
+            return ("Pool Python " + currentProject[row].project.name)
+        }
         return currentProject[row].project.name
     }
 }

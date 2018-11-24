@@ -57,7 +57,7 @@ class Histogram: UIView {
         let linePath = UIBezierPath()
         for i in 0...self.skills.count - 1 {
             let x = Double(radius) * cos((angle * Double(i)) * Double.pi / 180.0) + Double(center.x)
-            let y = Double(radius) * sin((angle * Double(i)) * Double.pi / 180.0) + Double(center.y)
+            let y = Double(radius) * sin((angle * Double(i)) * Double.pi / 180.0) * 1.2 + Double(center.y)
             //draw lines
             linePath.move(to: center)
             linePath.addLine(to: CGPoint(x: x, y: y))

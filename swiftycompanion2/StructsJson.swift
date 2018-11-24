@@ -37,7 +37,7 @@ struct ProjectsUser: Codable {
     let project: Cursus
 //    let cursusIDS: [Int]
     let markedAt: String?
-//    let marked: Bool
+    let marked: Bool
     
     enum CodingKeys: String, CodingKey {
 //        case id, occurrence
@@ -48,7 +48,7 @@ struct ProjectsUser: Codable {
         case project
 //        case cursusIDS = "cursus_ids"
         case markedAt = "marked_at"
-//        case marked
+        case marked
     }
 }
 

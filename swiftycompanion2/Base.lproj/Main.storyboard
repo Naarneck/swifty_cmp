@@ -86,6 +86,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="search" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="searchBtn" destination="nBs-O3-JLl" id="cfv-Mq-u2H"/>
                         <outlet property="searchField" destination="3lV-ce-uVu" id="3uE-Hm-CZO"/>
                         <outlet property="tableView" destination="jmB-Od-0Cg" id="bzG-D7-248"/>
                     </connections>
@@ -190,12 +191,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zXV-sg-5hL" customClass="Histogram" customModule="swiftycompanion2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="333" width="375" height="241"/>
+                                                <rect key="frame" x="0.0" y="333" width="375" height="267"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ge-9g-E9w">
-                                                <rect key="frame" x="0.0" y="582" width="375" height="245"/>
+                                                <rect key="frame" x="2" y="608" width="375" height="219"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feb-th-n0H">
