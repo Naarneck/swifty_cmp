@@ -14,17 +14,18 @@ struct Request : Decodable{
 
 class FirstViewController: UIViewController {
     
-    
-    @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var notFoundView: UIView!
+    @IBOutlet weak var notFoundImage: UIImageView!
     
     let charset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz0123456789-")
     var token : String?
     var currentUser : UserInfo?
     var data = [User(id: 23104, login: "izelensk", url: "https://cdn.intra.42.fr/users/kbovt.jpg"), User(id: 22342, login: "kbovt", url: "https://cdn.intra.42.fr/users/kbovt.jpg")]
     var placeholder : Data?
+    let images = [#imageLiteral(resourceName: "im1"),#imageLiteral(resourceName: "im2"),#imageLiteral(resourceName: "im3"),#imageLiteral(resourceName: "im4")]
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     func getToken(completion : @escaping(_ success : Bool) -> Void){
         let uid = "91277f6f0296fb92a2ba30bc1fc505011153b9704b73f4a92f80d0006905aa7e"
@@ -77,6 +78,11 @@ class FirstViewController: UIViewController {
                     print(users)
                     self.data = users
                     DispatchQueue.main.async {
+                        self.notFoundView.isHidden = true
+                        if self.data.isEmpty{
+                            self.notFoundView.isHidden = false
+                            self.notFoundImage.image = self.images[Int(arc4random_uniform(UInt32(self.images.count)))]
+                        }
                         self.tableView.reloadData()
                         self.tableView.refreshControl?.endRefreshing()
                     }
@@ -131,37 +137,38 @@ class FirstViewController: UIViewController {
         secVC.awakeFromNib()
     }
     
-    @IBAction func searchClick(_ sender: UIButton) {
-        if ((searchField.text?.count)! < 2) || (((searchField.text?.lowercased().rangeOfCharacter(from: self.charset)) == nil)){
+    func searchForName(name : String){
+        if ((name.count) < 2) || (((name.lowercased().rangeOfCharacter(from: self.charset)) == nil)){
             return
         }
-        let minRange = searchField.text?.lowercased()
-        let maxRange = minRange! + "zzz"
-        getUsers(min: minRange!, max: maxRange)
-
+        let minRange = name.lowercased()
+        let maxRange = minRange + "zzz"
+        getUsers(min: minRange, max: maxRange)
     }
-
-    @IBAction func searchEdited(_ sender: UITextField) {
-        let text = sender.text
-        print(text!)
-        if text?.rangeOfCharacter(from: charset.inverted) != nil {
-            print("bad")
-            self.searchField.text! = String(self.searchField.text!.dropLast())
-        } else {
-            print("good")
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
-        {
-            self.searchClick(self.searchBtn)
-        }
-    }
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
 
+}
+
+extension   FirstViewController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let text = searchText
+        print(text)
+        if text.lowercased().rangeOfCharacter(from: charset.inverted) != nil {
+            print("bad")
+            self.searchBar.text! = String(self.searchBar.text!.dropLast())
+        } else {
+            print("good")
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+//            {
+                self.searchForName(name: text)
+//            }
+        }
+    }
 }
 
 extension   FirstViewController : UITableViewDelegate, UITableViewDataSource{
@@ -172,6 +179,10 @@ extension   FirstViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell
+        if indexPath.row  >= self.data.count{
+            print("strannge error")
+            return cell!
+        }
         cell?.xlogin.text = self.data[indexPath.row].login
         let url = URL(string: "https://cdn.intra.42.fr/users/small_\(self.data[indexPath.row].login).jpg")
         //https://cdn.intra.42.fr/users/medium_default.png
