@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftycompanion2/FirstViewController.swift"
-            timestampString = "564776331.316569"
+            timestampString = "564936893.655795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftycompanion2/FirstViewController.swift"
-            timestampString = "564776331.316976"
+            timestampString = "564936893.6561019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "getUserByXlogin(xlogin:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "swiftycompanion2/FirstViewController.swift"
-            timestampString = "564776331.317286"
+            timestampString = "564936893.656297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"

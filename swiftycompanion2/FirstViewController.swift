@@ -87,7 +87,16 @@ class FirstViewController: UIViewController {
                         self.tableView.refreshControl?.endRefreshing()
                     }
                 } catch {
-                    print("catch getUsers")
+                    print("Error while getUsers..")
+                    self.getToken(){
+                        (success) -> Void in
+                        if success{
+                            print("retriyng with new token")
+                            self.getUsers(min : min, max : max)
+                        } else {
+                            print("error while get token")
+                        }
+                    }
                 }
             }
         }).resume()
@@ -97,7 +106,11 @@ class FirstViewController: UIViewController {
         let getUsers = URL.init(string: "https://api.intra.42.fr/v2/users/\(xlogin)")
         let bearer = "Bearer \(self.token!)"
         var request = URLRequest(url: getUsers!)
-        
+        let secVC = self.tabBarController?.viewControllers![1] as! SecondViewController
+        DispatchQueue.main.async {
+            secVC.activity.startAnimating()
+            secVC.activityBackground.isHidden = false
+        }
         request.allHTTPHeaderFields = ["Authorization" : bearer]
         URLSession.shared.dataTask(with: request, completionHandler: {
             data, response, error in
@@ -108,10 +121,26 @@ class FirstViewController: UIViewController {
                 do{
                     let userInfo = try JSONDecoder().decode(UserInfo.self, from: d)
                     self.currentUser = userInfo
-                    print(self.currentUser)
+//                    print(self.currentUser)
                     completion(true)
                 } catch {
-                    print("catch getUserbyXlogin")
+                    print("Error while getUserbyXlogin...")
+                    self.getToken(){
+                        (success) -> Void in
+                        if success{
+                            self.getUserByXlogin(xlogin: xlogin){
+                                (success) -> Void in
+                                if(success){
+                                    print("Successfully retried")
+                                } else {
+                                    print("Can't process with new token")
+                                }
+                            }
+                        } else {
+                            print("error while get token")
+                        }
+                    }
+
                 }
             }
         }).resume()
@@ -150,7 +179,11 @@ class FirstViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func ripToken(_ sender: Any) {
+        self.token = "PleaseHalp!"
+    }
+    
 
 }
 
@@ -222,6 +255,8 @@ extension   FirstViewController : UITableViewDelegate, UITableViewDataSource{
                     }
                     secVC.histogram.drawBackground()
                     secVC.pickerProject.reloadAllComponents()
+                    secVC.activity.stopAnimating()
+                    secVC.activityBackground.isHidden = true
                 }
             } else {
                 print("error while get token")

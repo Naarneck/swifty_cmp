@@ -26,6 +26,8 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var projname: UILabel!
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var mark: UILabel!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+    @IBOutlet weak var activityBackground: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
